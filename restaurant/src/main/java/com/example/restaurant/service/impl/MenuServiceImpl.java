@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.restaurant.exception.MenuServiceException;
+import com.example.common.exception.CustomException.MenuServiceException;
 import com.example.restaurant.model.MenuItem;
 import com.example.restaurant.repository.MenuRepository;
 import com.example.restaurant.service.MenuService;
@@ -20,6 +20,7 @@ public class MenuServiceImpl implements MenuService {
 	@Autowired
 	private MenuRepository menuRepository;
 
+	@SuppressWarnings("unlikely-arg-type")
 	@Override
 	public Map<String, List<MenuItem>> getMenuItems() {
 		try {
@@ -42,7 +43,7 @@ public class MenuServiceImpl implements MenuService {
 
 		} catch (Exception e) {
 
-			throw new MenuServiceException("An error occurred while fetching menu items.",e);
+			throw new MenuServiceException("An error occurred while fetching menu items.", e);
 		}
 	}
 }
