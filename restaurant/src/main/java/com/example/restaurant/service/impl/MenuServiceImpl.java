@@ -4,6 +4,7 @@ import java.util.Comparator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,5 +46,15 @@ public class MenuServiceImpl implements MenuService {
 
 			throw new MenuServiceException("An error occurred while fetching menu items.", e);
 		}
+	}
+
+	@Override
+	public MenuItem getMenuItemByName(String itemName) {
+
+		// Retrieve the menu item by name from your repository
+		Optional<MenuItem> optionalMenuItem = menuRepository.findByName(itemName);
+
+		// Return the menu item if found, or null if not found
+		return optionalMenuItem.orElse(null);
 	}
 }

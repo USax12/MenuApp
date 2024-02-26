@@ -9,4 +9,6 @@ public interface MenuService {
 
 	Map<String, List<MenuItem>> getMenuItems();
 
+	MenuItem getMenuItemByName(String itemName);
+
 }
